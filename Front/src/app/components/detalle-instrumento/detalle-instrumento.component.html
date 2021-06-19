@@ -1,0 +1,46 @@
+
+<hr>
+<div *ngIf="instrumento" class="row">
+    <div class="col-md-4" style="text-align: center">
+        <img [src]="formatImage(instrumento.foto)" style="max-width: 300px;" class="img-fluid" >
+        <br><br>
+        <div class="container" style="text-align: left">        
+        
+        <p><b style="font-size: large;">Descripcion:</b><br> {{instrumento.descripcion}}</p>
+        <button type="button" [routerLink]="['/instrumentos']" class="btn btn-primary"
+        style="width: 150px">
+            Volver
+        </button>
+
+        <button *ngIf="instrumento.id" [routerLink]="['/instrumento/editar', instrumento.id]" class="btn btn-warning"
+        style="width: 150px">
+            Editar
+        </button>
+
+        <button type="button" (click)="eliminar()" class="btn btn-danger"
+        style="width: 150px">
+            Eliminar
+        </button>
+            
+    </div>
+    
+    </div>  
+   
+    <div class="col-md-8">
+        <h3>{{instrumento.instrument}}</h3>
+        <hr>
+        <p>{{instrumento.cantidadVendida}} vendidos</p>
+        <h2 style="color: gray;"><b>Precio:</b> ${{instrumento.precio}}</h2>
+        <p><b>Marca:</b> {{instrumento.marca}}</p>
+        <p><b>Modelo:</b> {{instrumento.modelo}}</p>
+        
+        <b>Costo Envio:</b> 
+        <div>
+        <p *ngIf="envio(instrumento.costoEnvio) else elseB" style="color: green;">
+             Envios gratis a todo el pais</p>
+            </div>
+            <ng-template #elseB >
+               <p style="color: red;"> Envio: $ {{ instrumento.costoEnvio }}</p> 
+            </ng-template>
+    </div> 
+</div>

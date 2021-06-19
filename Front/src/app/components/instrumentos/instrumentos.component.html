@@ -1,0 +1,35 @@
+<div class="card m-4 b-4 p-4">
+
+  <button [routerLink]="['/instrumento/crear']" routerLinkActive="router-link-active"  class="btn btn-success" style="width: 90%;">Crear</button>
+</div>
+<div class="card-deck">
+    <div class="row">
+        
+   
+    <div class="card p-3 m-4 b-4" *ngFor="let instrum of instrumArray; let i = index" style="max-width: 20%; padding: 20px;">
+             
+     
+        <img class="card-img-top" [src]="formatImage(instrum.foto)"  alt="Card image cap" style="max-height: 200px;">
+   
+        <div class="card-body">
+        <h3 class="card-title">{{instrum.instrument}}</h3>
+        <h5 class="card-title">${{instrum.precio}}</h5>
+        <h5 style="font-size: large;">{{instrum.cantidadVendida}} vendidos</h5>
+
+        <b>Costo Envio:</b> 
+        <div>
+        <p *ngIf="envio(instrum.costoEnvio) else elseB" style="color: green;">
+             Envios gratis a todo el pais</p>
+            </div>
+            <ng-template #elseB >
+               <p style="color: red;"> Envio: $ {{ instrum.costoEnvio }}</p> 
+            </ng-template>             
+     
+                
+      </div>
+      <div class="card-footer" style="text-align: center;">
+        <button (click)="verInstrumento(instrum.id)" class="btn btn-primary" style="width: 90%;">Detalle</button>
+      </div>
+    </div>
+</div>
+  </div>

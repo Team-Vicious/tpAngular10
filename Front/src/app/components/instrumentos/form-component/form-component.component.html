@@ -1,0 +1,70 @@
+<div class="card text-white bg-primary p-4 b-5 m-4">
+    <div class="card text-white bg-secondary mb-3">
+
+        <h3>Credenciales del usuario</h3>
+    </div>
+    <div class="card-body">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Instrumento</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="instrument" [(ngModel)]="instrumento.instrument">
+        </div>
+    </div>
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Marca</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="marca" [(ngModel)]="instrumento.marca">
+        </div>
+
+    </div>
+
+    
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Modelo</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="modelo" [(ngModel)]="instrumento.modelo">
+        </div>
+
+    </div>
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Precio</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="precio" [(ngModel)]="instrumento.precio">
+        </div>
+
+    </div>
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Costo Envio</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="costoEnvio" [(ngModel)]="instrumento.costoEnvio">
+        </div>
+
+    </div>
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Cantidad Vendida</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="cantidadVendida" [(ngModel)]="instrumento.cantidadVendida">
+        </div>
+
+    </div>
+
+    <div class="card-body">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Descripcion</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="descripcion" [(ngModel)]="instrumento.descripcion">
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupFile01">Upload Imagen</label>
+            <input (change)="seleccionarFoto($event)" type="file" class="form-control" id="inputGroupFile01">
+        </div>
+        <img *ngIf="instrumento.foto"
+                    [src]="formatImage(instrumento.foto)"
+                    class= "img-thumbnail rounded"
+                    style= "width: 250px; cursor:pointer;">
+    </div>
+    
+    <button *ngIf="!intrumentoActualizar" type="button" class="btn btn-warning"  (click)="crear()" routerLinkActive="active">CREAR!</button>
+    <button *ngIf="intrumentoActualizar" type="button" class="btn btn-success"  (click)="actualizar()" routerLinkActive="active">ACTUALIZAR!</button>
+</div>
